@@ -1,4 +1,0 @@
-- insert:
-    - id: session-management
-      name: 'dsh-session-management'
-      config: {}

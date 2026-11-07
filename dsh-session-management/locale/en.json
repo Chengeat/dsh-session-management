@@ -1,6 +1,0 @@
-{
-  "meta": {
-    "title": "Session management",
-    "description": "List, archive, pin, stop, rename, and permanently delete DSH sessions — from a Settings page, the /sessions command, or the session_manage tool."
-  }
-}
