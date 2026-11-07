@@ -8,7 +8,8 @@
 
 `dsh` 原生只有「归档」。这个插件补上缺失的那块：真正的删除（把会话日志从磁盘移除），外加一个能看清每个会话大小、状态、日志路径的全局视图。
 
-![license](https://img.shields.io/badge/license-MIT-green)
+[![license](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+[![GitHub repo](https://img.shields.io/badge/GitHub-Chengeat%2Fdsh--session--management-181717?logo=github)](https://github.com/Chengeat/dsh-session-management)
 
 ## 功能
 
@@ -45,19 +46,37 @@
 
 ## 安装
 
-1. 克隆（或下载）本仓库：
+一条命令装进任意 profile（需要 `PATH` 里有 `pnpm`，可用 `corepack enable pnpm` 开启）：
 
-   ```sh
-   git clone https://github.com/<你的用户名>/dsh-session-management.git
-   ```
+```sh
+dsh plugin --profile <profile名> add github:Chengeat/dsh-session-management
+```
 
-2. 把 bundle 装进当前 `dsh` profile，两种方式任选：
+例如装进名为 `web` 的 profile：
 
-   - **在交互式 `dsh` 会话里（推荐）** —— 告诉 AI：
-     > 安装 /abs/path/to/dsh-session-management 这个插件 bundle
-   - **在 Web GUI 里** —— 打开 **Settings → Plugins**，像安装任何 bundle 一样安装本目录。
+```sh
+dsh plugin --profile web add github:Chengeat/dsh-session-management
+```
 
-3. **重启 `dsh` 并刷新浏览器页面。** 同时带 Host 与 Client 两半的 bundle 首次安装需要重启，模块图才会加载这两半。
+npm 包名为 **`dsh-session-management-t`**（不带后缀的 `dsh-session-management` 已被 npm 上另一个插件占用）。待该包发布后，也可以按包名安装：
+
+```sh
+dsh plugin --profile web add dsh-session-management-t
+```
+
+首次从 git 安装时，pnpm 会要求允许安装期构建步骤：按 pnpm 打印出的 `allowBuilds` 键，把它加进该 profile 的 `pnpm-workspace.yaml`，然后重跑上面的命令即可。
+
+或者克隆源码后安装：
+
+```sh
+git clone https://github.com/Chengeat/dsh-session-management.git
+```
+
+- **在交互式 `dsh` 会话里（推荐）** —— 告诉 AI：
+  > 安装 /abs/path/to/dsh-session-management 这个插件 bundle
+- **在 Web GUI 里** —— 打开 **Settings → Plugins**，像安装任何 bundle 一样安装本目录。
+
+装完请 **重启 `dsh` 并刷新浏览器页面。** 同时带 Host 与 Client 两半的 bundle 首次安装需要重启，模块图才会加载这两半。
 
 重启后四个入口同时可用：
 
@@ -135,6 +154,7 @@ dsh-session-management/
   icon.svg              # bundle 图标
   locale/en.json        # meta.title / meta.description（英文）
   locale/zh.json        # meta.title / meta.description（中文）
+  screenshots.json      # 市场截图清单（见 awesome-dsh-plugin 约定）
   screenshot/           # 上文截图（EN-*.png 英文界面，CH-*.png 中文界面）
   README.md             # 英文文档
   README-zh.md          # 本文件

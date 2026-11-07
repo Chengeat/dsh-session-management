@@ -1,5 +1,5 @@
 /**
- * dsh-session-management — manage DSH sessions: list, archive/unarchive,
+ * dsh-session-management-t — manage DSH sessions: list, archive/unarchive,
  * pin/unpin, stop, rename (live), and physically delete stored session logs.
  *
  * One operation core (`sessionAdmin`) shared by:
@@ -14,7 +14,7 @@ export const name = 'session-management'
 export const inject = ['tools', 'commands', 'sessionQuery', 'workspaceRegistry', 'agents', 'sessionTitle']
 
 /** Route prefix serving the settings page JSON API at `/<API_BASE>/…`. */
-const API_BASE = '/dsh-session-management'
+const API_BASE = '/dsh-session-management-t'
 
 const CONFIRM_PHRASE = 'confirm'
 const ACTIONS = ['list', 'archive', 'unarchive', 'pin', 'unpin', 'stop', 'rename', 'delete']
@@ -350,7 +350,7 @@ export function apply(ctx, config) {
     if (request.headers.get('sec-fetch-site') === 'cross-site') return json({ ok: false, error: 'cross-site request refused' }, 403)
     const pathname = new URL(request.url).pathname
     if (request.method === 'GET' || request.method === 'HEAD') {
-      return json({ ok: true, service: 'dsh-session-management', actions: ACTIONS })
+      return json({ ok: true, service: 'dsh-session-management-t', actions: ACTIONS })
     }
     if (request.method !== 'POST') return json({ ok: false, error: 'method not allowed' }, 405)
     void pathname

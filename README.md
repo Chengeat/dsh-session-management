@@ -8,7 +8,8 @@ List, archive, pin, stop, rename, and **permanently delete** your `dsh` sessions
 
 `dsh` only ships *Archive* for sessions. This plugin adds the missing part: a real delete (removes the session log from disk), plus a bird's-eye view of every session with its size, status, and log path.
 
-![license](https://img.shields.io/badge/license-MIT-green)
+[![license](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+[![GitHub repo](https://img.shields.io/badge/GitHub-Chengeat%2Fdsh--session--management-181717?logo=github)](https://github.com/Chengeat/dsh-session-management)
 
 ## Features
 
@@ -45,19 +46,37 @@ The built-in session menu gains a red **Delete session** item above Archive:
 
 ## Install
 
-1. Clone (or download) this repository:
+One command, into any profile (`pnpm` must be on `PATH` — `corepack enable pnpm`):
 
-   ```sh
-   git clone https://github.com/<your-name>/dsh-session-management.git
-   ```
+```sh
+dsh plugin --profile <profile-name> add github:Chengeat/dsh-session-management
+```
 
-2. Install the bundle into your current `dsh` profile, either way:
+For example, to install into the profile named `web`:
 
-   - **From an interactive `dsh` session (recommended)** — tell the AI:
-     > install the plugin bundle at /abs/path/to/dsh-session-management
-   - **From the Web GUI** — open **Settings → Plugins** and install this directory like any bundle.
+```sh
+dsh plugin --profile web add github:Chengeat/dsh-session-management
+```
 
-3. **Restart `dsh` and refresh the browser page.** A bundle with both a Host and a Client half needs a restart on first install so the module graph picks the halves up.
+The npm package name is **`dsh-session-management-t`** (the un-suffixed `dsh-session-management` is already taken on npm by another plugin). Once it is published, install by name instead:
+
+```sh
+dsh plugin --profile web add dsh-session-management-t
+```
+
+The first install of a git-hosted plugin asks pnpm to allow its install-time build step: when pnpm prints an `allowBuilds` key, add that exact key to the profile's `pnpm-workspace.yaml` and re-run the command.
+
+Or install from a checkout:
+
+```sh
+git clone https://github.com/Chengeat/dsh-session-management.git
+```
+
+- **From an interactive `dsh` session (recommended)** — tell the AI:
+  > install the plugin bundle at /abs/path/to/dsh-session-management
+- **From the Web GUI** — open **Settings → Plugins** and install this directory like any bundle.
+
+**Restart `dsh` and refresh the browser page.** A bundle with both a Host and a Client half needs a restart on first install so the module graph picks the halves up.
 
 After the restart you get all four surfaces at once:
 
@@ -135,6 +154,7 @@ dsh-session-management/
   icon.svg              # bundle icon
   locale/en.json        # meta.title / meta.description (English)
   locale/zh.json        # meta.title / meta.description (中文)
+  screenshots.json      # storefront screenshot manifest (see awesome-dsh-plugin)
   screenshot/           # the images above (EN-*.png English UI, CH-*.png 中文 UI)
   README.md             # this file
   README-zh.md          # 中文文档

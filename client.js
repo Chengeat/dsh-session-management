@@ -1,10 +1,10 @@
 window.__ModuleLoader__.load({
-  id: 'dsh-session-management',
+  id: 'dsh-session-management-t',
   factory(require) {
     const React = require('react')
     const h = React.createElement
 
-    const API = '/dsh-session-management/api'
+    const API = '/dsh-session-management-t/api'
 
     // Locale follows the Harness language setting (ctx.locale), not the raw
     // browser header. Set once in apply(); the browser language is only the
