@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "会话管理",
+    "description": "列出、归档、置顶、停止、重命名并永久删除 DSH 会话 — 提供 Settings 页面、/sessions 命令与 session_manage 工具三种入口。"
+  }
+}
